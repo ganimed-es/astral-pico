@@ -39,6 +39,9 @@
     <meta property="og:type" content="website">
     {% if pages.index.meta.og_image %}<meta property="og:image" content="{{ pages.index.meta.og_image | url }}">{% endif %}
 
+
+    <link rel="icon" type="image/x-icon" href="{{ pages.index.meta.profile | url }}">
+
   </head>
 
   <body>
@@ -77,6 +80,7 @@
           <header>
             <h1>{{ site_title }}</h1>
             <p>{{ pages.index.meta.description }}</p>
+            {{ pages.index.id | content }}
             {% set next_id = '' %}
             {% for page in pages() %}
               {% if not page.hidden and not break %}
@@ -87,7 +91,7 @@
           </header>
           <a href="#{{ next_id }}" class="jumplink pic">
             <span class="arrow icon fa-chevron-right"><span>{{ pages[next_id].meta.title }}</span></span>
-            <img src="{{ pages.index.meta.profile ?: theme_url ~ "/assets/profile.png" }}" alt="" />
+            {# <img src="{{ pages.index.meta.profile ?: theme_url ~ "/assets/profile.png" }}" alt="" /> #}
           </a>
         </article>
 
